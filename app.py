@@ -32,7 +32,6 @@ stemmer = PorterStemmer()
 stop_words = set(stopwords.words('english'))
 
 def clean_text(text):
-    """Preprocess and clean the input text message."""
     text = text.lower()                                       # Convert text to lowercase
     text = re.sub(r'[^a-zA-Z]', ' ', text)                    # Remove special characters and digits
     tokens = word_tokenize(text)                              # Tokenize the message into words
@@ -46,12 +45,10 @@ def clean_text(text):
 
 @app.route('/')
 def home():
-    """Render the main user interface."""
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    """Process user input, run prediction, and display the result."""
     if request.method == 'POST':
         message = request.form['message']
 
